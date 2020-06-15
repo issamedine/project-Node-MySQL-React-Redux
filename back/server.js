@@ -3,27 +3,11 @@ const Users = require("./models/user");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-// const Sequelize = require('sequelize')
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// app.get("/current", async (req, res) => {
-//     try {
-//         const user = await Users.findOne({
-//             where: {
-//                 name: req.user.name
-//             }
-//         })
-//         res.send({
-//             person: user
-//         })
-//     } catch (err) {
-//         res.status(500).send("Server error !!!");
-//     }
-// });
 
 app.post("/signup", (req, res) => {
   const { name, family_name, password } = req.body;
@@ -82,17 +66,6 @@ app.post("/login", (req, res) => {
 app.get("/api/list-user", (req, res) => {
   Users.findAll().then((user) => {
     res.json(user);
-  });
-});
-
-app.get("/api/list-user/:id", (req, res) => {
-  let { id } = req.params;
-  Users.findByPk(id).then((user) => {
-    if (user) {
-      res.json(user);
-    } else {
-      res.status(404).send();
-    }
   });
 });
 

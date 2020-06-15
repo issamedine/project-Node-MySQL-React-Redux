@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
 
 import { connect } from "react-redux";
 
@@ -10,7 +10,7 @@ import { getAllUser, deleteUser } from "../../Redux/actions/user";
 
 import ModalAddUpdate from "./componentCustom/ModalAddUpdate";
 
-import './Listuser.css'
+import "./Listuser.css";
 
 const ListUser = (props) => {
   const [userValue, setUserValue] = useState({});
@@ -47,7 +47,12 @@ const ListUser = (props) => {
       Header: "action",
       Cell: ({ row }) => (
         <div>
-          <button className="update-class" onClick={() => handleOpen(row.values)}>Update</button>
+          <button
+            className="update-class"
+            onClick={() => handleOpen(row.values)}
+          >
+            Update
+          </button>
           <IconButton
             aria-label="delete"
             onClick={() => handleDelete(row.values.id)}
@@ -61,8 +66,6 @@ const ListUser = (props) => {
 
   const [data, setData] = useState(React.useMemo(() => props.user.list, []));
 
-  // const [skipPageReset, setSkipPageReset] = useState(false);
-
   useEffect(() => {
     setData(props.user.list);
   }, [props.user.list]);
@@ -70,21 +73,6 @@ const ListUser = (props) => {
   useEffect(() => {
     props.getAllUser();
   }, []);
-
-  // const updateMyData = (rowIndex, columnId, value) => {
-  //   setSkipPageReset(true);
-  //   setData((old) =>
-  //     old.map((row, index) => {
-  //       if (index === rowIndex) {
-  //         return {
-  //           ...old[rowIndex],
-  //           [columnId]: value,
-  //         };
-  //       }
-  //       return row;
-  //     })
-  //   );
-  // };
 
   return (
     <div>
@@ -95,8 +83,6 @@ const ListUser = (props) => {
             columns={columns}
             data={data || []}
             setData={setData}
-            // updateMyData={updateMyData}
-            // skipPageReset={skipPageReset}
           />
           <ModalAddUpdate
             userValue={userValue}
