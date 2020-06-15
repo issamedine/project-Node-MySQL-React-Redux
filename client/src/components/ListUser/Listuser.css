@@ -1,0 +1,8 @@
+.update-class {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.update-class:hover {
+    color: #8b8b8b;
+}
