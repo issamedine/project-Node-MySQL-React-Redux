@@ -1,9 +1,11 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
+/node_modules
+
 back/node_modules
 
 # dependencies
 client/node_modules
-client
+back
 
 # testing
 client/coverage
